@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'kelas_page.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -14,7 +15,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   static const List<Widget> _widgetOptions = <Widget>[
     HomeContent(),
-    Center(child: Text('Kelas Saya')),
+    KelasPage(),
     Center(child: Text('Notifikasi')),
   ];
 
