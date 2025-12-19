@@ -34,7 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   Positioned(
-                    top: 110,
+                    top: 200,
                     left: MediaQuery.of(context).size.width / 2 - 40,
                     child: Container(
                       width: 80,
@@ -53,8 +53,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: const Center(
                         child: Image(
                           image: AssetImage('image/logo.png'),
-                          width: 48,
-                          height: 48,
+                          width: 65,
+                          height: 65,
                         ),
                       ),
                     ),
@@ -82,7 +82,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(height: 24),
                   TextField(
                     decoration: const InputDecoration(
-                      hintText: 'Email 365',
+                      hintText: 'Email',
                       border: UnderlineInputBorder(),
                       enabledBorder: UnderlineInputBorder(
                         borderSide: BorderSide(color: Colors.grey),
@@ -152,11 +152,22 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  const Center(
-                    child: Text(
-                      'Bantuan ?',
-                      style: TextStyle(color: Colors.grey, fontSize: 14),
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Bantuan ?',
+                        style: TextStyle(color: Colors.grey, fontSize: 14),
+                      ),
+                      Text(
+                        'Register',
+                        style: TextStyle(
+                          color: Color(0xFF4B0082),
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),

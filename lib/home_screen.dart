@@ -27,33 +27,75 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color(0xFFA47DAB),
-        elevation: 0,
-        title: const Row(
-          children: [
-            Text(
-              'Selamat Datang, User!',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-                fontWeight: FontWeight.w600,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(120),
+        child: Container(
+          color: const Color(0xFFA47DAB),
+          child: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+                vertical: 8.0,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Text(
+                        'Hallo,',
+                        style: TextStyle(color: Colors.white, fontSize: 16),
+                      ),
+                      Text(
+                        'DIAN AFRIYANI WULANDARI',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 4,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.2),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: const Text(
+                          'MAHASISWA',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      const CircleAvatar(
+                        backgroundColor: Colors.white,
+                        child: Icon(Icons.person, color: Color(0xFFA47DAB)),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 16.0),
-            child: CircleAvatar(
-              backgroundColor: Colors.white,
-              child: Icon(Icons.person, color: const Color(0xFFA47DAB)),
-            ),
           ),
-        ],
+        ),
       ),
-      body: _widgetOptions.elementAt(_selectedIndex),
+      body: _widgetOptions[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: const Color(0xFFA47DAB),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(
@@ -66,12 +108,9 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: const Color(0xFFA47DAB),
-        unselectedItemColor: Colors.grey,
-        backgroundColor: Colors.white,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white70,
         onTap: _onItemTapped,
-        type: BottomNavigationBarType.fixed,
-        showUnselectedLabels: true,
       ),
     );
   }
@@ -83,138 +122,262 @@ class HomeContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: const EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Ringkasan Pembelajaran',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Colors.black87,
-            ),
-          ),
-          const SizedBox(height: 16),
-          // Class Cards
-          const Text(
-            'Kelas yang Sedang Diikuti',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w600,
-              color: Colors.black54,
-            ),
-          ),
-          const SizedBox(height: 8),
-          Card(
-            elevation: 4,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'Matematika Dasar',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          // Tugas Yang Akan Datang
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Card(
+              color: Colors.transparent,
+              elevation: 4,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Color(0xFFA47DAB),
+                      Color(0xFFFF69B4),
+                    ], // Purple to Pink
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
                   ),
-                  const SizedBox(height: 8),
-                  const Text(
-                    'Progres: 75%',
-                    style: TextStyle(color: Colors.grey),
+                  borderRadius: BorderRadius.all(Radius.circular(16)),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const Text(
+                        'DESAIN ANTARMUKA & PENGALAMAN PENGGUNA',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 1.2,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      const Text(
+                        'Tugas 01 – UID Android Mobile Game',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.white70, fontSize: 14),
+                      ),
+                      const SizedBox(height: 16),
+                      const Divider(color: Colors.white30, thickness: 1),
+                      const SizedBox(height: 16),
+                      const Text(
+                        'Waktu Pengumpulan',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.white70, fontSize: 12),
+                      ),
+                      const SizedBox(height: 4),
+                      const Text(
+                        'Jumat 26 Februari, 23:59 WIB',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
                   ),
-                  const SizedBox(height: 8),
-                  LinearProgressIndicator(
-                    value: 0.75,
-                    backgroundColor: Colors.grey[300],
-                    valueColor: AlwaysStoppedAnimation<Color>(
-                      const Color(0xFFA47DAB),
-                    ),
-                  ),
-                ],
+                ),
               ),
             ),
           ),
-          const SizedBox(height: 16),
-          Card(
-            elevation: 4,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'Bahasa Inggris',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          // Pengumuman Terakhir
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'Pengumuman Terakhir',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black87,
                   ),
-                  const SizedBox(height: 8),
-                  const Text(
-                    'Progres: 60%',
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                  const SizedBox(height: 8),
-                  LinearProgressIndicator(
-                    value: 0.6,
-                    backgroundColor: Colors.grey[300],
-                    valueColor: AlwaysStoppedAnimation<Color>(
-                      const Color(0xFFA47DAB),
+                ),
+                TextButton(
+                  onPressed: () {},
+                  child: const Text(
+                    'Lihat Semua',
+                    style: TextStyle(
+                      color: Color(0xFFA47DAB),
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
-                ],
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Card(
+              elevation: 4,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Maintenance Pra UAS Semester Genap 2020/2021',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black87,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Container(
+                      height: 100,
+                      decoration: BoxDecoration(
+                        color: Colors.grey[200],
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: const Center(
+                        child: Icon(Icons.build, size: 48, color: Colors.grey),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
           const SizedBox(height: 24),
-          // Upcoming Assignments
-          const Text(
-            'Tugas Terdekat',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w600,
-              color: Colors.black54,
+          // Progres Kelas
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            child: Text(
+              'Progres Kelas',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+                color: Colors.black87,
+              ),
             ),
           ),
-          const SizedBox(height: 8),
-          Card(
-            elevation: 4,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: const Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Row(
-                children: [
-                  Icon(Icons.assignment, color: Color(0xFFA47DAB), size: 40),
-                  SizedBox(width: 16),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+          const SizedBox(height: 16),
+          ListView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: courses.length,
+            itemBuilder: (context, index) {
+              final course = courses[index];
+              return Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16.0,
+                  vertical: 4.0,
+                ),
+                child: Card(
+                  elevation: 2,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Row(
                       children: [
-                        Text(
-                          'Tugas Matematika',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
+                        Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: Colors.grey[200],
+                            borderRadius: BorderRadius.circular(8),
                           ),
+                          child: const Icon(Icons.book, color: Colors.grey),
                         ),
-                        Text(
-                          'Deadline: 25 Desember 2025',
-                          style: TextStyle(color: Colors.grey),
+                        const SizedBox(width: 16),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                '2021/2',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              Text(
+                                course['name']!,
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black87,
+                                ),
+                              ),
+                              Text(
+                                course['code']!,
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              const SizedBox(height: 8),
+                              LinearProgressIndicator(
+                                value: course['progress']! / 100,
+                                backgroundColor: Colors.grey[300],
+                                valueColor: const AlwaysStoppedAnimation<Color>(
+                                  Color.fromARGB(255, 102, 26, 138),
+                                ),
+                              ),
+                              const SizedBox(height: 4),
+                              Text(
+                                '${course['progress']}% Selesai',
+                                style: const TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
                   ),
-                ],
-              ),
-            ),
+                ),
+              );
+            },
           ),
+          const SizedBox(height: 16),
         ],
       ),
     );
   }
 }
+
+const List<Map<String, dynamic>> courses = [
+  {
+    'name': 'DESAIN ANTARMUKA & PENGALAMAN PENGGUNA',
+    'code': 'UID101 - Dr. Ahmad',
+    'progress': 89,
+  },
+  {'name': 'KEWARGANEGARAAN', 'code': 'KW101 - Prof. Siti', 'progress': 86},
+  {'name': 'SISTEM OPERASI', 'code': 'SO101 - Dr. Budi', 'progress': 90},
+  {
+    'name': 'PEMROGRAMAN PERANGKAT BERGERAK MULTIMEDIA',
+    'code': 'PPBM101 - Dr. Rina',
+    'progress': 90,
+  },
+  {
+    'name': 'BAHASA INGGRIS: BUSINESS AND SCIENTIFIC',
+    'code': 'ENG101 - Ms. Lisa',
+    'progress': 90,
+  },
+  {
+    'name': 'PEMROGRAMAN MULTIMEDIA INTERAKTIF',
+    'code': 'PMI101 - Dr. Eko',
+    'progress': 90,
+  },
+  {'name': 'OLAH RAGA', 'code': 'OR101 - Coach Tono', 'progress': 90},
+];
