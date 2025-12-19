@@ -292,10 +292,15 @@ class HomeContent extends StatelessWidget {
                           width: 50,
                           height: 50,
                           decoration: BoxDecoration(
-                            color: Colors.grey[200],
                             borderRadius: BorderRadius.circular(8),
                           ),
-                          child: const Icon(Icons.book, color: Colors.grey),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8),
+                            child: Image.asset(
+                              course['image']!,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
                         ),
                         const SizedBox(width: 16),
                         Expanded(
@@ -362,23 +367,42 @@ const List<Map<String, dynamic>> courses = [
     'name': 'DESAIN ANTARMUKA & PENGALAMAN PENGGUNA',
     'code': 'UID101 - Dr. Ahmad',
     'progress': 89,
+    'image': 'image/desain.png',
   },
-  {'name': 'KEWARGANEGARAAN', 'code': 'KW101 - Prof. Siti', 'progress': 86},
-  {'name': 'SISTEM OPERASI', 'code': 'SO101 - Dr. Budi', 'progress': 90},
+  {
+    'name': 'KEWARGANEGARAAN',
+    'code': 'KW101 - Prof. Siti',
+    'progress': 86,
+    'image': 'image/pkn.png',
+  },
+  {
+    'name': 'SISTEM OPERASI',
+    'code': 'SO101 - Dr. Budi',
+    'progress': 90,
+    'image': 'image/sistem.png',
+  },
   {
     'name': 'PEMROGRAMAN PERANGKAT BERGERAK MULTIMEDIA',
     'code': 'PPBM101 - Dr. Rina',
     'progress': 90,
+    'image': 'image/bergerak.png',
   },
   {
     'name': 'BAHASA INGGRIS: BUSINESS AND SCIENTIFIC',
     'code': 'ENG101 - Ms. Lisa',
     'progress': 90,
+    'image': 'image/Inggris.png',
   },
   {
     'name': 'PEMROGRAMAN MULTIMEDIA INTERAKTIF',
     'code': 'PMI101 - Dr. Eko',
     'progress': 90,
+    'image': 'image/media.png',
   },
-  {'name': 'OLAH RAGA', 'code': 'OR101 - Coach Tono', 'progress': 90},
+  {
+    'name': 'OLAH RAGA',
+    'code': 'OR101 - Coach Tono',
+    'progress': 90,
+    'image': 'image/olahraga.png',
+  },
 ];
