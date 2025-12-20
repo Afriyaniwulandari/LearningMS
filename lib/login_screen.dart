@@ -44,8 +44,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         shape: BoxShape.circle,
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withOpacity(0.1),
-                            blurRadius: 6,
+                            color: Color(0xFFA47DAB).withOpacity(0.3),
+                            blurRadius: 8,
                             offset: const Offset(0, 4),
                           ),
                         ],
@@ -88,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         borderSide: BorderSide(color: Colors.grey),
                       ),
                       focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Color(0xFF4B0082)),
+                        borderSide: BorderSide(color: Color(0xFFA47DAB)),
                       ),
                     ),
                   ),
@@ -122,31 +122,47 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(height: 32),
                   SizedBox(
                     width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) =>
-                                const MyHomePage(title: 'U Learn Home Page'),
-                          ),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF4B0082),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        gradient: const LinearGradient(
+                          colors: [Color(0xFFA47DAB), Color(0xFFFF69B4)],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
                         ),
-                        padding: const EdgeInsets.symmetric(vertical: 16),
-                        shadowColor: Colors.black.withOpacity(0.2),
-                        elevation: 8,
+                        borderRadius: BorderRadius.circular(50),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.2),
+                            blurRadius: 8,
+                            offset: const Offset(0, 4),
+                          ),
+                        ],
                       ),
-                      child: const Text(
-                        'Log In',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) =>
+                                  const MyHomePage(title: 'U Learn Home Page'),
+                            ),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.transparent,
+                          shadowColor: Colors.transparent,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                          padding: const EdgeInsets.symmetric(vertical: 16),
+                        ),
+                        child: const Text(
+                          'Log In',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
                     ),
@@ -162,7 +178,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Text(
                         'Register',
                         style: TextStyle(
-                          color: Color(0xFF4B0082),
+                          color: Color(0xFFA47DAB),
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
                         ),
@@ -179,7 +195,15 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   ClipPath(
                     clipper: WaveClipper(),
-                    child: Container(color: const Color(0xFF4B0082)),
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [Color(0xFFA47DAB), Color(0xFFFF69B4)],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                      ),
+                    ),
                   ),
                   Positioned(
                     bottom: 20,
@@ -187,7 +211,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: const Text(
                       'Register',
                       style: TextStyle(
-                        color: Color(0xFF4B0082),
+                        color: Color(0xFFA47DAB),
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
                       ),

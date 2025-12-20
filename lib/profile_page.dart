@@ -61,11 +61,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         CircleAvatar(
                           radius: 50,
                           backgroundColor: Colors.white,
-                          child: Icon(
-                            Icons.person,
-                            size: 50,
-                            color: Color(0xFFA47DAB),
-                          ),
+                          backgroundImage: AssetImage('image/foto.png'),
                         ),
                         SizedBox(height: 16),
                         Text(
