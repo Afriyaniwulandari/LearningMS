@@ -57,7 +57,8 @@ class _ProfilePageState extends State<ProfilePage> {
                   Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
+                      children: [
+                        SizedBox(height: 20),
                         CircleAvatar(
                           radius: 50,
                           backgroundColor: Colors.white,

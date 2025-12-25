@@ -235,10 +235,11 @@ class CourseDetailPage extends StatelessWidget {
               },
             ),
             // Tab Tugas dan Kuis
-            ListView(
-              children: [
-                // Quiz
-                Card(
+            ListView.builder(
+              itemCount: tugasDanKuis.length,
+              itemBuilder: (context, index) {
+                final item = tugasDanKuis[index];
+                return Card(
                   margin: const EdgeInsets.all(16),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
@@ -250,78 +251,41 @@ class CourseDetailPage extends StatelessWidget {
                         color: Colors.blue[100],
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child: const Text(
-                        'Quiz',
-                        style: TextStyle(
+                      child: Text(
+                        item['type']!,
+                        style: const TextStyle(
                           color: Colors.blue,
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
-                    title: const Text('Quiz Review 01'),
-                    subtitle: const Text('Tenggat: 25 Februari 2021 23:59 WIB'),
-                    trailing: const Icon(
-                      Icons.check_circle,
-                      color: Colors.green,
+                    title: Text(item['title']!),
+                    subtitle: Text(item['subtitle']!),
+                    trailing: Icon(
+                      item['completed']! ? Icons.check_circle : Icons.circle,
+                      color: item['completed']! ? Colors.green : Colors.grey,
                     ),
+                    onTap: () {
+                      if (item['type'] == 'Quiz' || item['type'] == 'Kuis') {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => DetailKuisPage(item: item),
+                          ),
+                        );
+                      } else {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => DetailTugasPage(item: item),
+                          ),
+                        );
+                      }
+                    },
                   ),
-                ),
-                // Tugas
-                Card(
-                  margin: const EdgeInsets.all(16),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: ListTile(
-                    leading: Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: Colors.blue[100],
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: const Text(
-                        'Tugas',
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    title: const Text('Tugas 01 – UID Android Mobile Game'),
-                    subtitle: const Text('Tenggat: 26 Februari 2021 23:59 WIB'),
-                    trailing: const Icon(Icons.circle, color: Colors.grey),
-                  ),
-                ),
-                // Another Quiz
-                Card(
-                  margin: const EdgeInsets.all(16),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: ListTile(
-                    leading: Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: Colors.blue[100],
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: const Text(
-                        'Pertemuan 3',
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    title: const Text('Kuis – Assessment 2'),
-                    subtitle: const Text('Tenggat: 28 Februari 2021 23:59 WIB'),
-                    trailing: const Icon(Icons.circle, color: Colors.grey),
-                  ),
-                ),
-              ],
+                );
+              },
             ),
           ],
         ),
@@ -428,6 +392,132 @@ class DetailMateriPage extends StatelessWidget {
   }
 }
 
+class DetailKuisPage extends StatelessWidget {
+  final Map<String, dynamic> item;
+
+  const DetailKuisPage({super.key, required this.item});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        title: Text(item['title']!),
+        backgroundColor: const Color(0xFFA47DAB),
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              item['title']!,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 16),
+            const Text(
+              'Deskripsi: Jawab pertanyaan berikut untuk menyelesaikan kuis.',
+              style: TextStyle(fontSize: 16),
+            ),
+            const SizedBox(height: 16),
+            Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: const Column(
+                children: [
+                  ListTile(
+                    title: Text('Pertanyaan 1: Apa itu User Interface Design?'),
+                    subtitle: Text('Jawab dengan singkat.'),
+                  ),
+                  Divider(),
+                  ListTile(
+                    title: Text('Pertanyaan 2: Sebutkan 3 prinsip desain UI.'),
+                    subtitle: Text('Berikan contoh.'),
+                  ),
+                  Divider(),
+                  ListTile(
+                    title: Text(
+                      'Pertanyaan 3: Jelaskan peran UX dalam aplikasi mobile.',
+                    ),
+                    subtitle: Text('Diskusikan pentingnya.'),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class DetailTugasPage extends StatelessWidget {
+  final Map<String, dynamic> item;
+
+  const DetailTugasPage({super.key, required this.item});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        title: Text(item['title']!),
+        backgroundColor: const Color(0xFFA47DAB),
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              item['title']!,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 16),
+            const Text(
+              'Deskripsi: Buat aplikasi mobile game sederhana menggunakan prinsip UI Design.',
+              style: TextStyle(fontSize: 16),
+            ),
+            const SizedBox(height: 16),
+            Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Column(
+                children: [
+                  const ListTile(
+                    leading: Icon(Icons.picture_as_pdf),
+                    title: Text('Panduan Tugas.pdf'),
+                    subtitle: Text('PDF - 2 MB'),
+                  ),
+                  const Divider(),
+                  const ListTile(
+                    leading: Icon(Icons.link),
+                    title: Text('Referensi Android Development'),
+                    subtitle: Text('URL'),
+                  ),
+                  const Divider(),
+                  ListTile(
+                    title: const Text('Tenggat Pengumpulan'),
+                    subtitle: Text(item['subtitle']!),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 const List<Map<String, dynamic>> courses = [
   {
     'name': 'DESAIN ANTARMUKA & PENGALAMAN PENGGUNA',
@@ -470,6 +560,27 @@ const List<Map<String, dynamic>> courses = [
     'code': 'OR101 - Coach Tono',
     'progress': 90,
     'image': 'image/olahraga.png',
+  },
+];
+
+const List<Map<String, dynamic>> tugasDanKuis = [
+  {
+    'type': 'Quiz',
+    'title': 'Quiz Review 01',
+    'subtitle': 'Tenggat: 25 Februari 2021 23:59 WIB',
+    'completed': true,
+  },
+  {
+    'type': 'Tugas',
+    'title': 'Tugas 01 – UID Android Mobile Game',
+    'subtitle': 'Tenggat: 26 Februari 2021 23:59 WIB',
+    'completed': false,
+  },
+  {
+    'type': 'Kuis',
+    'title': 'Kuis – Assessment 2',
+    'subtitle': 'Tenggat: 28 Februari 2021 23:59 WIB',
+    'completed': false,
   },
 ];
 

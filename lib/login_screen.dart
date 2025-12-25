@@ -205,18 +205,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  Positioned(
-                    bottom: 20,
-                    right: 24,
-                    child: const Text(
-                      'Register',
-                      style: TextStyle(
-                        color: Color(0xFFA47DAB),
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
                 ],
               ),
             ),
