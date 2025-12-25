@@ -67,7 +67,7 @@ class KelasPage extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     const Text(
-                                      '2021/2',
+                                      '2024/2025',
                                       style: TextStyle(
                                         fontSize: 12,
                                         color: Colors.grey,
@@ -94,7 +94,7 @@ class KelasPage extends StatelessWidget {
                                       backgroundColor: Colors.grey[300],
                                       valueColor:
                                           const AlwaysStoppedAnimation<Color>(
-                                            Color(0xFFA47DAB),
+                                            Color(0xFFFF69B4),
                                           ),
                                     ),
                                     const SizedBox(height: 4),
@@ -308,7 +308,17 @@ class DetailMateriPage extends StatelessWidget {
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: Text(material['title']!),
-        backgroundColor: const Color(0xFFA47DAB),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Color(0xFFA47DAB), Color(0xFFFF69B4)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
@@ -406,7 +416,17 @@ class DetailKuisPage extends StatelessWidget {
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: Text(item['title']!),
-        backgroundColor: const Color(0xFFA47DAB),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Color(0xFFA47DAB), Color(0xFFFF69B4)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
@@ -469,7 +489,17 @@ class DetailTugasPage extends StatelessWidget {
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: Text(item['title']!),
-        backgroundColor: const Color(0xFFA47DAB),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Color(0xFFA47DAB), Color(0xFFFF69B4)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
@@ -567,19 +597,19 @@ const List<Map<String, dynamic>> tugasDanKuis = [
   {
     'type': 'Quiz',
     'title': 'Quiz Review 01',
-    'subtitle': 'Tenggat: 25 Februari 2021 23:59 WIB',
+    'subtitle': 'Tenggat: 25 Februari 2025 23:59 WIB',
     'completed': true,
   },
   {
     'type': 'Tugas',
     'title': 'Tugas 01 – UID Android Mobile Game',
-    'subtitle': 'Tenggat: 26 Februari 2021 23:59 WIB',
+    'subtitle': 'Tenggat: 26 Februari 2025 23:59 WIB',
     'completed': false,
   },
   {
     'type': 'Kuis',
     'title': 'Kuis – Assessment 2',
-    'subtitle': 'Tenggat: 28 Februari 2021 23:59 WIB',
+    'subtitle': 'Tenggat: 28 Februari 2025 23:59 WIB',
     'completed': false,
   },
 ];

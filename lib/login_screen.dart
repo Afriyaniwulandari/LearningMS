@@ -44,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         shape: BoxShape.circle,
                         boxShadow: [
                           BoxShadow(
-                            color: Color(0xFFA47DAB).withOpacity(0.3),
+                            color: Color(0xFFFF69B4).withOpacity(0.3),
                             blurRadius: 8,
                             offset: const Offset(0, 4),
                           ),
@@ -88,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         borderSide: BorderSide(color: Colors.grey),
                       ),
                       focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Color(0xFFA47DAB)),
+                        borderSide: BorderSide(color: Color(0xFFFF69B4)),
                       ),
                     ),
                   ),
@@ -175,12 +175,19 @@ class _LoginScreenState extends State<LoginScreen> {
                         'Bantuan ?',
                         style: TextStyle(color: Colors.grey, fontSize: 14),
                       ),
-                      Text(
-                        'Register',
-                        style: TextStyle(
-                          color: Color(0xFFA47DAB),
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
+                      ShaderMask(
+                        shaderCallback: (bounds) => const LinearGradient(
+                          colors: [Color(0xFFA47DAB), Color(0xFFFF69B4)],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ).createShader(bounds),
+                        child: const Text(
+                          'Register',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
                     ],

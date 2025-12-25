@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'kelas_page.dart';
 import 'profile_page.dart';
 import 'notifikasi_page.dart';
+import 'pengumuman_page.dart';
+import 'tugas_detail_page.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -41,7 +43,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   );
                 },
                 child: Container(
-                  color: const Color(0xFFA47DAB),
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [Color(0xFFA47DAB), Color(0xFFFF69B4)],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                  ),
                   child: SafeArea(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
@@ -99,24 +107,33 @@ class _MyHomePageState extends State<MyHomePage> {
             )
           : null,
       body: _widgetOptions[_selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: const Color(0xFFA47DAB),
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'Kelas Saya',
+      bottomNavigationBar: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color(0xFFA47DAB), Color(0xFFFF69B4)],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            label: 'Notifikasi',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white70,
-        onTap: _onItemTapped,
+        ),
+        child: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: Colors.transparent,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.school),
+              label: 'Kelas Saya',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.notifications),
+              label: 'Notifikasi',
+            ),
+          ],
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.white70,
+          onTap: _onItemTapped,
+        ),
       ),
     );
   }
@@ -134,63 +151,71 @@ class HomeContent extends StatelessWidget {
           // Tugas Yang Akan Datang
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Card(
-              color: Colors.transparent,
-              elevation: 4,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
-              ),
-              child: Container(
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Color(0xFFA47DAB),
-                      Color(0xFFFF69B4),
-                    ], // Purple to Pink
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                  ),
-                  borderRadius: BorderRadius.all(Radius.circular(16)),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const TugasDetailPage()),
+                );
+              },
+              child: Card(
+                color: Colors.transparent,
+                elevation: 4,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const Text(
-                        'DESAIN ANTARMUKA & PENGALAMAN PENGGUNA',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 1.2,
+                child: Container(
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        Color(0xFFA47DAB),
+                        Color(0xFFFF69B4),
+                      ], // Purple to Pink
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                    borderRadius: BorderRadius.all(Radius.circular(16)),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const Text(
+                          'DESAIN ANTARMUKA & PENGALAMAN PENGGUNA',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: 1.2,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 8),
-                      const Text(
-                        'Tugas 01 – UID Android Mobile Game',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.white70, fontSize: 14),
-                      ),
-                      const SizedBox(height: 16),
-                      const Divider(color: Colors.white30, thickness: 1),
-                      const SizedBox(height: 16),
-                      const Text(
-                        'Waktu Pengumpulan',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.white70, fontSize: 12),
-                      ),
-                      const SizedBox(height: 4),
-                      const Text(
-                        'Jumat 26 Februari, 23:59 WIB',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
+                        const SizedBox(height: 8),
+                        const Text(
+                          'Tugas 01 – UID Android Mobile Game',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.white70, fontSize: 14),
                         ),
-                      ),
-                    ],
+                        const SizedBox(height: 16),
+                        const Divider(color: Colors.white30, thickness: 1),
+                        const SizedBox(height: 16),
+                        const Text(
+                          'Waktu Pengumpulan',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.white70, fontSize: 12),
+                        ),
+                        const SizedBox(height: 4),
+                        const Text(
+                          'Jumat 26 Februari, 23:59 WIB',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -211,12 +236,24 @@ class HomeContent extends StatelessWidget {
                   ),
                 ),
                 TextButton(
-                  onPressed: () {},
-                  child: const Text(
-                    'Lihat Semua',
-                    style: TextStyle(
-                      color: Color(0xFFA47DAB),
-                      fontWeight: FontWeight.w600,
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => const PengumumanPage()),
+                    );
+                  },
+                  child: ShaderMask(
+                    shaderCallback: (bounds) => const LinearGradient(
+                      colors: [Color(0xFFA47DAB), Color(0xFFFF69B4)],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ).createShader(bounds),
+                    child: const Text(
+                      'Lihat Semua',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ),
@@ -236,7 +273,7 @@ class HomeContent extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      'Maintenance Pra UAS Semester Genap 2020/2021',
+                      'Maintenance Pra UAS Semester Genap 2024/2025',
                       style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
@@ -315,7 +352,7 @@ class HomeContent extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               const Text(
-                                '2021/2',
+                                '2024/2025',
                                 style: TextStyle(
                                   fontSize: 12,
                                   color: Colors.grey,
@@ -341,7 +378,7 @@ class HomeContent extends StatelessWidget {
                                 value: course['progress']! / 100,
                                 backgroundColor: Colors.grey[300],
                                 valueColor: const AlwaysStoppedAnimation<Color>(
-                                  Color.fromARGB(255, 102, 26, 138),
+                                  Color(0xFFA47DAB),
                                 ),
                               ),
                               const SizedBox(height: 4),

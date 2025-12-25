@@ -13,7 +13,7 @@ class _ProfilePageState extends State<ProfilePage> {
   String email = 'dian.afriyani@example.com';
   String programStudi = 'Teknik Informatika';
   String fakultas = 'Fakultas Teknik';
-  String riwayatLogin = 'Terakhir login: 19 Desember 2023, 15:30';
+  String riwayatLogin = 'Terakhir login: 19 Desember 2025, 15:30';
 
   // Controllers for edit form
   final TextEditingController _firstNameController = TextEditingController();
@@ -40,7 +40,13 @@ class _ProfilePageState extends State<ProfilePage> {
           // Custom Header
           Container(
             height: 250,
-            decoration: const BoxDecoration(color: Color(0xFFA47DAB)),
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Color(0xFFA47DAB), Color(0xFFFF69B4)],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+            ),
             child: SafeArea(
               child: Stack(
                 children: [
@@ -105,8 +111,8 @@ class _ProfilePageState extends State<ProfilePage> {
                       ],
                     ),
                     child: const TabBar(
-                      indicatorColor: Color(0xFFA47DAB),
-                      labelColor: Color(0xFFA47DAB),
+                      indicatorColor: Color(0xFFFF69B4),
+                      labelColor: Color(0xFFFF69B4),
                       unselectedLabelColor: Colors.grey,
                       labelStyle: TextStyle(fontWeight: FontWeight.bold),
                       tabs: [
@@ -147,9 +153,9 @@ class _ProfilePageState extends State<ProfilePage> {
           const SizedBox(height: 16),
           _buildInfoRow('Fakultas', fakultas),
           const SizedBox(height: 16),
-          _buildInfoRow('First Access', '19 Desember 2023, 10:00'),
+          _buildInfoRow('First Access', '19 Desember 2025, 10:00'),
           const SizedBox(height: 16),
-          _buildInfoRow('Last Access', '19 Desember 2023, 15:30'),
+          _buildInfoRow('Last Access', '19 Desember 2025, 15:30'),
           const SizedBox(height: 40),
           Align(
             alignment: Alignment.centerRight,
@@ -250,7 +256,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          'Tanggal Mulai: 1 Januari 2023',
+                          'Tanggal Mulai: 1 Januari 2025',
                           style: const TextStyle(
                             fontSize: 12,
                             color: Colors.grey,
@@ -325,7 +331,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 );
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFFA47DAB),
+                backgroundColor: const Color(0xFFFF69B4),
                 foregroundColor: Colors.white,
                 minimumSize: const Size(200, 50),
                 shape: RoundedRectangleBorder(
